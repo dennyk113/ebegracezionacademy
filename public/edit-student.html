@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Student — Ebegrace Zion Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* =============================================
+       EDIT STUDENT — NAGIE’S ANGELS STYLE
+       ============================================= */
+
+    .edit-hero {
+      background: linear-gradient(135deg, #8B00FF, #FF6B9D);
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+    }
+
+    .edit-main {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    .edit-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .form-full {
+      grid-column: 1 / -1;
+    }
+
+    .edit-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .edit-form input,
+    .edit-form select,
+    .edit-form textarea {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #e0e0ff;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+
+    .edit-form input:focus,
+    .edit-form select:focus,
+    .edit-form textarea:focus {
+      outline: none;
+      border-color: #8B00FF;
+    }
+
+    .btn-primary {
+      background: #8B00FF;
+      color: white;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      grid-column: 1 / -1;
+      margin-top: 20px;
+    }
+
+    .btn-primary:hover {
+      background: #6a00cc;
+      transform: translateY(-2px);
+    }
+
+    .photo-preview {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .photo-preview img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #f0f0ff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Ebegrace Zion Academy Logo">
+      <h1>EBEGRACE ZION ACADEMY</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#" id="logoutBtn" class="btn-logout">LOGOUT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="edit-hero">
+    <h1>Edit Student Information</h1>
+    <p>Update student details, class, or parent information</p>
+  </section>
+
+  <main class="edit-main">
+    <form id="editForm">
+      <div class="form-full">
+        <label for="studentPhoto">Student Photo</label>
+        <input type="file" id="studentPhoto" accept="image/*">
+        <div class="photo-preview">
+          <img src="images/student-photo.jpg" alt="Student Photo" id="photoPreview">
+        </div>
+      </div>
+      <div>
+        <label for="studentName">Student Full Name</label>
+        <input type="text" id="studentName" required>
+      </div>
+      <div>
+        <label for="studentId">Student ID</label>
+        <input type="text" id="studentId" required>
+      </div>
+      <div>
+        <label for="studentAge">Age</label>
+        <input type="number" id="studentAge" required>
+      </div>
+      <div>
+        <label for="studentClass">Class</label>
+        <input type="text" id="studentClass" required>
+      </div>
+      <div>
+        <label for="studentLevel">Level</label>
+        <select id="studentLevel" required>
+          <option value="Pre-School">Pre-School</option>
+          <option value="Primary">Primary</option>
+          <option value="JHS">JHS</option>
+        </select>
+      </div>
+      <div>
+        <label for="enrollmentDate">Enrollment Date</label>
+        <input type="date" id="enrollmentDate" required>
+      </div>
+      <div>
+        <label for="parentName">Parent/Guardian Name</label>
+        <input type="text" id="parentName" required>
+      </div>
+      <div>
+        <label for="parentPhone">Parent Phone</label>
+        <input type="tel" id="parentPhone" required>
+      </div>
+      <div>
+        <label for="parentEmail">Parent Email</label>
+        <input type="email" id="parentEmail" required>
+      </div>
+      <div>
+        <label for="studentRegion">Region</label>
+        <select id="studentRegion" required>
+          <option value="Greater Accra">Greater Accra</option>
+          <option value="Ashanti">Ashanti</option>
+          <option value="Western">Western</option>
+          <option value="Central">Central</option>
+          <option value="Eastern">Eastern</option>
+          <option value="Volta">Volta</option>
+          <option value="Northern">Northern</option>
+          <option value="Upper East">Upper East</option>
+          <option value="Upper West">Upper West</option>
+          <option value="Brong-Ahafo">Brong-Ahafo</option>
+          <option value="Savannah">Savannah</option>
+          <option value="North East">North East</option>
+          <option value="Bono">Bono</option>
+          <option value="Ahafo">Ahafo</option>
+          <option value="Oti">Oti</option>
+          <option value="Western North">Western North</option>
+        </select>
+      </div>
+      <div class="form-full">
+        <label for="parentAddress">Home Address</label>
+        <textarea id="parentAddress" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn-primary">
+        <i class="fas fa-save"></i> Save Changes
+      </button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Ebegrace Zion Academy — Admin Panel</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(sessionStorage.getItem('loggedInStudent'));
+      if (!user || user.role !== 'admin') {
+        alert('⛔ Access denied. Admins only.');
+        window.location.href = 'index.html';
+        return;
+      }
+
+      // Get student ID from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const studentId = urlParams.get('id');
+
+      if (!studentId) {
+        alert('❌ No student ID specified.');
+        window.location.href = 'all-students.html';
+        return;
+      }
+
+      // For demo, load sample data
+      const sampleStudent = {
+        id: "EZ2025001",
+        name: "Kwame Boateng",
+        age: 6,
+        class: "Primary 1",
+        level: "Primary",
+        parent: "Mrs. Abena Mensah",
+        phone: "+233546792255",
+        region: "Greater Accra",
+        email: "parent1@ebegrace.edu.gh",
+        address: "Adenta, Accra",
+        enrollmentDate: "2025-01-15",
+        photo: "images/student-photo.jpg"
+      };
+
+      // Populate form
+      document.getElementById('studentName').value = sampleStudent.name;
+      document.getElementById('studentId').value = sampleStudent.id;
+      document.getElementById('studentAge').value = sampleStudent.age;
+      document.getElementById('studentClass').value = sampleStudent.class;
+      document.getElementById('studentLevel').value = sampleStudent.level;
+      document.getElementById('enrollmentDate').value = sampleStudent.enrollmentDate;
+      document.getElementById('parentName').value = sampleStudent.parent;
+      document.getElementById('parentPhone').value = sampleStudent.phone;
+      document.getElementById('parentEmail').value = sampleStudent.email;
+      document.getElementById('studentRegion').value = sampleStudent.region;
+      document.getElementById('parentAddress').value = sampleStudent.address;
+      document.getElementById('photoPreview').src = sampleStudent.photo;
+
+      // Handle photo upload preview
+      document.getElementById('studentPhoto').addEventListener('change', (e) => {
+        if (e.target.files[0]) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            document.getElementById('photoPreview').src = event.target.result;
+          };
+          reader.readAsDataURL(e.target.files[0]);
+        }
+      });
+
+      // Handle form submission
+      document.getElementById('editForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // In real app, send to backend
+        alert('✅ Student information updated successfully!');
+        
+        // Redirect back to profile
+        window.location.href = `student-profile.html?id=${studentId}`;
+      });
+
+      // Logout
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        sessionStorage.removeItem('loggedInStudent');
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+
+</body>
+</html>

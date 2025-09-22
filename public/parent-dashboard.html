@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parent Dashboard — Ebegrace Zion Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .parent-hero {
+      background: linear-gradient(135deg, #8B00FF, #FF6B9D);
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+    }
+
+    .dashboard-main {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    .child-info-card {
+      background: #f0f0ff;
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      text-align: center;
+      border-left: 5px solid #8B00FF;
+    }
+
+    .child-info-card h3 {
+      color: #8B00FF;
+      margin-bottom: 20px;
+    }
+
+    .report-card-section {
+      margin-bottom: 40px;
+    }
+
+    .report-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .report-table th,
+    .report-table td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .report-table th {
+      background: #8B00FF;
+      color: white;
+    }
+
+    .actions-section {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0 15px;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: #8B00FF;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #FFA500;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #6a00cc;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary:hover {
+      background: #e69500;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Ebegrace Zion Academy Logo">
+      <h1>EBEGRACE ZION ACADEMY</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#" id="logoutBtn" class="btn-logout">LOGOUT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="parent-hero">
+    <h1>Parent Dashboard</h1>
+    <p>View your child’s progress, report cards, and school updates</p>
+  </section>
+
+  <main class="dashboard-main">
+
+    <div class="child-info-card">
+      <h3><i class="fas fa-child"></i> Ama Boateng</h3>
+      <p><strong>Class:</strong> Nursery 2</p>
+      <p><strong>Teacher:</strong> Mrs. Abena Mensah</p>
+      <p><strong>Attendance:</strong> 98% this term</p>
+    </div>
+
+    <div class="report-card-section">
+      <h3><i class="fas fa-clipboard-list"></i> Term 1 Report Card</h3>
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Grade</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mathematics</td>
+            <td>A</td>
+            <td>92%</td>
+          </tr>
+          <tr>
+            <td>English</td>
+            <td>B+</td>
+            <td>85%</td>
+          </tr>
+          <tr>
+            <td>Bible Knowledge</td>
+            <td>A</td>
+            <td>95%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="actions-section">
+      <button class="btn-primary"><i class="fas fa-envelope"></i> Message Teacher</button>
+      <button class="btn-secondary"><i class="fas fa-download"></i> Download Report</button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Ebegrace Zion Academy</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          sessionStorage.removeItem('loggedInStudent');
+          window.location.href = 'index.html';
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

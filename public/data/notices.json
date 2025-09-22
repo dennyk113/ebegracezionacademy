@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "title": "Spelling Bee Registration Open",
+    "message": "Register your child for the Term 2 Spelling Bee Competition. Prizes for top 3 winners!",
+    "postedBy": "Mrs. Abena Mensah",
+    "class": "All Classes",
+    "category": "Spelling",
+    "date": "2025-05-28T10:00:00Z",
+    "expiry": "2025-06-15T00:00:00Z",
+    "image": null
+  },
+  {
+    "id": 2,
+    "title": "Math & Science Week",
+    "message": "Join us for exciting experiments, quizzes, and projects. Theme: 'Intelligence in Action'.",
+    "postedBy": "Mrs. Abena Mensah",
+    "class": "Primary & JHS",
+    "category": "Intelligence",
+    "date": "2025-05-25T14:30:00Z",
+    "expiry": "2025-06-05T00:00:00Z",
+    "image": null
+  },
+  {
+    "id": 3,
+    "title": "Independence Day Celebration",
+    "message": "All learners to wear traditional attire on March 6th. Cultural parade at 9 AM.",
+    "postedBy": "Rev. Dr. Grace A. Mensah",
+    "class": "All Classes",
+    "category": "Nationalism",
+    "date": "2025-02-20T09:00:00Z",
+    "expiry": "2025-03-07T00:00:00Z",
+    "image": null
+  },
+  {
+    "id": 4,
+    "title": "Chapel Service Tomorrow",
+    "message": "Theme: 'Kindness is Strength'. All learners to bring Bibles. Parents welcome!",
+    "postedBy": "Pastor Kwame Boateng",
+    "class": "All Classes",
+    "category": "Godliness",
+    "date": "2025-05-30T16:00:00Z",
+    "expiry": "2025-06-01T00:00:00Z",
+    "image": null
+  },
+  {
+    "id": 5,
+    "title": "School Closed Tomorrow",
+    "message": "Due to public holiday. School resumes on Wednesday, June 4th, 2025.",
+    "postedBy": "Admin Office",
+    "class": "All Classes",
+    "category": "Urgent",
+    "date": "2025-05-31T08:00:00Z",
+    "expiry": "2025-06-04T00:00:00Z",
+    "image": null
+  }
+]

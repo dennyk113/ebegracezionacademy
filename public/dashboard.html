@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Dashboard — Ebegrace Zion Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* =============================================
+       TEACHER DASHBOARD — NAGIE’S ANGELS INSPIRED
+       ============================================= */
+
+    .dashboard-hero {
+      background: linear-gradient(135deg, #8B00FF, #FF6B9D);
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-text h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+      font-weight: 300;
+    }
+
+    .dashboard-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* SECTION TITLES */
+    .section-title {
+      color: #5a3a8c; /* Deep purple — matches Nagie’s Angels header */
+      font-size: 2.0rem;
+      font-weight: 700;
+      margin: 50px 0 30px;
+      position: relative;
+      padding-left: 10px;
+    }
+
+    .section-title::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 30px;
+      background: #FFA500; /* Orange accent */
+      border-radius: 3px;
+    }
+
+    /* POST NOTICE FORM CARD */
+    .post-notice-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 12px 40px rgba(60, 30, 100, 0.08);
+      border: 1px solid #f0f0ff;
+      margin-bottom: 50px;
+    }
+
+    .post-notice-card h3 {
+      color: #5a3a8c;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* FORM GRID */
+    #noticeForm {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .form-full {
+      grid-column: 1 / -1;
+    }
+
+    /* LABELS */
+    #noticeForm label {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #333;
+      margin: 20px 0 8px;
+    }
+
+    /* INPUTS, TEXTAREA, SELECT */
+    #noticeForm input,
+    #noticeForm select,
+    #noticeForm textarea {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid #eaeaff;
+      border-radius: 16px;
+      font-size: 1rem;
+      color: #444;
+      background: #fafbff;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #noticeForm input:focus,
+    #noticeForm select:focus,
+    #noticeForm textarea:focus {
+      outline: none;
+      border-color: #5a3a8c;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(90, 58, 140, 0.15);
+    }
+
+    /* PLACEHOLDER */
+    #noticeForm input::placeholder,
+    #noticeForm textarea::placeholder {
+      color: #aaa;
+      font-style: italic;
+    }
+
+    /* SELECT CUSTOM ARROW */
+    #noticeForm select {
+      appearance: none;
+      background-image: url("image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235a3a8c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 20px center;
+      background-size: 18px;
+      padding-right: 50px;
+    }
+
+    /* TEXTAREA */
+    #noticeForm textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* FILE UPLOAD */
+    #noticeForm input[type="file"] {
+      padding: 10px;
+      background: white;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+    }
+
+    #noticeForm input[type="file"]:hover {
+      border-color: #8B00FF;
+    }
+
+    /* SUBMIT BUTTON */
+    .btn-primary {
+      background: #5a3a8c;
+      color: white;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      grid-column: 1 / -1;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background: #4a2a7c;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(90, 58, 140, 0.3);
+    }
+
+    /* POSTED NOTICES SECTION */
+    .posted-notices-section {
+      background: linear-gradient(135deg, rgba(139, 0, 255, 0.03), rgba(255, 165, 0, 0.03));
+      padding: 50px 20px;
+      border-radius: 30px;
+      margin: 50px 0;
+    }
+
+    /* TWO-COLUMN GRID */
+    .notices-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* GLASSMORPHISM NOTICE CARD */
+    .notice-item {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(139, 0, 255, 0.15);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .notice-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(90, 58, 140, 0.15);
+      border-color: rgba(139, 0, 255, 0.3);
+    }
+
+    .notice-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #8B00FF, #FFA500);
+    }
+
+    .notice-item h4 {
+      color: #333;
+      margin: 0 0 15px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .notice-item p {
+      color: #555;
+      line-height: 1.7;
+      margin: 15px 0;
+      font-size: 1.05rem;
+    }
+
+    /* CATEGORY TAG */
+    .category-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-left: 15px;
+      border: 1px solid currentColor;
+    }
+
+    /* IMAGE PREVIEW */
+    .image-preview {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .image-preview img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-height: 200px;
+      object-fit: cover;
+    }
+
+    /* META INFO */
+    .notice-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(90, 58, 140, 0.1);
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    .notice-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .notice-meta i {
+      color: #5a3a8c;
+      font-size: 1.1rem;
+    }
+
+    /* EXPIRY BADGE */
+    .expiry-badge {
+      background: rgba(255, 243, 224, 0.8);
+      backdrop-filter: blur(8px);
+      color: #e65100;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(230, 81, 0, 0.2);
+    }
+
+    .expiry-badge.expired {
+      background: rgba(211, 47, 47, 0.1) !important;
+      color: #d32f2f !important;
+      text-decoration: line-through;
+    }
+
+    /* EDIT BUTTON */
+    .btn-edit {
+      background: rgba(76, 175, 80, 0.9); /* Green */
+      backdrop-filter: blur(8px);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-right: 10px;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    }
+
+    .btn-edit:hover {
+      background: rgba(67, 160, 71, 0.95);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(67, 160, 71, 0.4);
+    }
+
+    /* DELETE BUTTON */
+    .btn-delete {
+      background: rgba(255, 77, 77, 0.9);
+      backdrop-filter: blur(8px);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+    }
+
+    .btn-delete:hover {
+      background: rgba(230, 0, 0, 0.95);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(230, 0, 0, 0.4);
+    }
+
+    /* NO NOTICES MESSAGE */
+    .no-notices {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px;
+      color: #888;
+      font-size: 1.2rem;
+    }
+
+    /* OPTIONAL: ADD SUBTLE BACKGROUND PATTERN */
+    .posted-notices-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="rgba(139,0,255,0.05)" stroke-width="1"/></svg>');
+      z-index: -1;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .dashboard-hero {
+        padding: 80px 20px 60px;
+      }
+
+      .hero-text h2 {
+        font-size: 2.2rem;
+      }
+
+      #noticeForm {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .notices-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .notice-item {
+        padding: 30px 25px;
+        border-radius: 20px;
+      }
+
+      .notice-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding-top: 15px;
+      }
+
+      .btn-edit, .btn-delete {
+        margin-right: 0;
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Ebegrace Zion Academy Logo">
+      <h1>EBEGRACE ZION ACADEMY</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#" id="logoutBtn" class="btn-logout">LOGOUT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="dashboard-hero">
+    <div class="hero-text">
+      <h2>Teacher Dashboard</h2>
+      <p>Post, edit, and manage school notices</p>
+    </div>
+  </section>
+
+  <main class="dashboard-main">
+
+    <!-- POST NOTICE FORM -->
+    <section class="post-notice-card">
+      <h3><i class="fas fa-edit"></i> Post a New Notice</h3>
+      <form id="noticeForm">
+        <div>
+          <label for="noticeTitle">Title:</label>
+          <input type="text" id="noticeTitle" placeholder="e.g., Science Project Deadline" required>
+        </div>
+        <div>
+          <label for="noticeCategory">Category:</label>
+          <select id="noticeCategory" required>
+            <option value="">--Select Category--</option>
+            <option value="Spelling">📚 Spelling</option>
+            <option value="Intelligence">🧠 Intelligence</option>
+            <option value="Write">✍️ Write</option>
+            <option value="Events">📅 Events</option>
+            <option value="Nationalism">🇬🇭 Nationalism</option>
+            <option value="Attitude">😊 Attitude</option>
+            <option value="Godliness">🙏 Godliness</option>
+            <option value="Integrity">💎 Integrity</option>
+            <option value="Excellence">🏆 Excellence</option>
+            <option value="Service">🤝 Service</option>
+            <option value="News">📰 News</option>
+            <option value="Urgent">⚠️ Urgent</option>
+          </select>
+        </div>
+        <div>
+          <label for="noticeClass">Target Class:</label>
+          <select id="noticeClass" required>
+            <option value="All Classes">All Classes</option>
+            <option value="Pre-School">Pre-School</option>
+            <option value="Primary">Primary</option>
+            <option value="JHS">JHS</option>
+          </select>
+        </div>
+        <div>
+          <label for="noticeExpiry">Expiry Date (Optional):</label>
+          <input type="date" id="noticeExpiry">
+        </div>
+        <div class="form-full">
+          <label for="noticeMessage">Message:</label>
+          <textarea id="noticeMessage" placeholder="Write your notice here..." required></textarea>
+        </div>
+        <div class="form-full">
+          <label for="noticeImage">Upload Image (Optional):</label>
+          <input type="file" id="noticeImage" accept="image/*">
+        </div>
+        <button type="submit" class="btn-primary">
+          <i class="fas fa-paper-plane"></i> Post Notice
+        </button>
+      </form>
+    </section>
+
+    <!-- POSTED NOTICES -->
+    <section class="posted-notices-section">
+      <h2 class="section-title">Posted Notices</h2>
+      <div class="notices-grid">
+        <!-- Dynamically populated by JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="school-info">
+        <h4>Ebegrace Zion Academy</h4>
+        <p>Principal: Mrs. Antwi Grace</p>
+        <p>Email: ebegracezion@gmail.com</p>
+      </div>
+      <div class="quick-links">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="student-portal.html">School Portal</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Ebegrace Zion Academy. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const user = JSON.parse(sessionStorage.getItem('loggedInStudent'));
+      if (!user || user.role !== 'teacher') {
+        alert('Access denied. Teachers only.');
+        window.location.href = 'index.html';
+        return;
+      }
+
+      // Set today as min date for expiry
+      const expiryInput = document.getElementById('noticeExpiry');
+      if (expiryInput) {
+        expiryInput.min = new Date().toISOString().split('T')[0];
+      }
+
+      // Load and display notices
+      displayNotices();
+
+      // Handle form submission
+      const noticeForm = document.getElementById('noticeForm');
+      if (noticeForm) {
+        noticeForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          saveNotice();
+        });
+      }
+
+      // Save or Update Notice
+      function saveNotice() {
+        const user = JSON.parse(sessionStorage.getItem('loggedInStudent'));
+        if (!user) return;
+
+        const imageInput = document.getElementById('noticeImage');
+        if (imageInput && imageInput.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            finalizeNoticeSubmission(e.target.result);
+          };
+          reader.readAsDataURL(imageInput.files[0]);
+        } else {
+          finalizeNoticeSubmission(null);
+        }
+      }
+
+      function finalizeNoticeSubmission(imageUrl) {
+        let notices = JSON.parse(localStorage.getItem('schoolNotices') || '[]');
+        const noticeId = noticeForm.dataset.editingId;
+        const isEditing = !!noticeId;
+
+        const title = document.getElementById('noticeTitle')?.value?.trim() || '';
+        const message = document.getElementById('noticeMessage')?.value?.trim() || '';
+        const category = document.getElementById('noticeCategory')?.value || '';
+        const noticeClass = document.getElementById('noticeClass')?.value || 'All Classes';
+        const expiry = document.getElementById('noticeExpiry')?.value || null;
+
+        // Validation
+        if (!title || !message || !category) {
+          alert('❌ Please fill in all required fields.');
+          return;
+        }
+
+        if (isEditing) {
+          // Update existing notice
+          const index = notices.findIndex(n => n.id == noticeId);
+          if (index !== -1) {
+            notices[index] = {
+              ...notices[index],
+              title,
+              message,
+              category,
+              class: noticeClass,
+              expiry,
+              image: imageUrl !== undefined ? imageUrl : notices[index].image
+            };
+          }
+        } else {
+          // Create new notice
+          const newNotice = {
+            id: notices.length ? Math.max(...notices.map(n => n.id)) + 1 : 1,
+            title,
+            message,
+            postedBy: user.name,
+            class: noticeClass,
+            category,
+            date: new Date().toISOString(),
+            expiry,
+            image: imageUrl
+          };
+          notices.push(newNotice);
+        }
+
+        // Save
+        localStorage.setItem('schoolNotices', JSON.stringify(notices));
+
+        // Success
+        alert(`✅ Notice ${isEditing ? 'updated' : 'posted'} successfully!`);
+        noticeForm.reset();
+        delete noticeForm.dataset.editingId;
+        
+        // Reset button text
+        const submitBtn = document.querySelector('.btn-primary');
+        if (submitBtn) {
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Post Notice';
+        }
+
+        // Refresh display
+        displayNotices();
+      }
+
+      // Display notices with thumbnails and category colors
+      function displayNotices() {
+        const container = document.querySelector('.notices-grid');
+        if (!container) return;
+
+        let notices = JSON.parse(localStorage.getItem('schoolNotices') || '[]');
+        if (notices.length === 0) {
+          container.innerHTML = '<div class="no-notices">No notices posted yet.</div>';
+          return;
+        }
+
+        // Sort by newest first
+        notices.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        container.innerHTML = '';
+
+        notices.forEach(notice => {
+          const noticeDiv = document.createElement('div');
+          noticeDiv.className = 'notice-item';
+          
+          // Get category color — NAGIE’S ANGELS STYLE
+          const categoryColor = getCategoryColor(notice.category);
+          noticeDiv.style.borderLeft = `5px solid ${categoryColor}`;
+          
+          // Build HTML
+          let html = `
+            <h4>${notice.title} <span class="category-tag" style="background: ${categoryColor}22; color: ${categoryColor};">${notice.category}</span></h4>
+            <p>${notice.message}</p>
+          `;
+
+          // Add image thumbnail if exists
+          if (notice.image) {
+            html += `<div class="image-preview"><img src="${notice.image}" alt="Notice Image"></div>`;
+          }
+
+          // Add meta info
+          html += `
+            <div class="notice-meta">
+              <span><i class="fas fa-user"></i> Posted by: ${notice.postedBy}</span>
+              <span><i class="fas fa-calendar"></i> ${new Date(notice.date).toLocaleDateString()}</span>
+          `;
+
+          // Add expiry if exists
+          if (notice.expiry) {
+            const expiryDate = new Date(notice.expiry);
+            const isExpired = expiryDate < new Date();
+            const expiryClass = isExpired ? 'expired' : '';
+            html += `<span class="expiry-badge ${expiryClass}"><i class="fas fa-clock"></i> Expires: ${expiryDate.toLocaleDateString()}</span>`;
+          }
+
+          // Add edit and delete buttons
+          html += `
+              <button class="btn-edit" data-id="${notice.id}">✏️ Edit</button>
+              <button class="btn-delete" data-id="${notice.id}">🗑️ Delete</button>
+            </div>
+          `;
+
+          noticeDiv.innerHTML = html;
+          container.appendChild(noticeDiv);
+        });
+
+        // Add delete handlers
+        document.querySelectorAll('.btn-delete').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = parseInt(btn.getAttribute('data-id'));
+            let notices = JSON.parse(localStorage.getItem('schoolNotices') || '[]');
+            notices = notices.filter(n => n.id !== id);
+            localStorage.setItem('schoolNotices', JSON.stringify(notices));
+            displayNotices();
+          });
+        });
+
+        // Add edit handlers
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = parseInt(btn.getAttribute('data-id'));
+            const notices = JSON.parse(localStorage.getItem('schoolNotices') || '[]');
+            const notice = notices.find(n => n.id === id);
+            
+            if (notice) {
+              // Prefill form
+              document.getElementById('noticeTitle').value = notice.title;
+              document.getElementById('noticeMessage').value = notice.message;
+              document.getElementById('noticeCategory').value = notice.category;
+              document.getElementById('noticeClass').value = notice.class;
+              document.getElementById('noticeExpiry').value = notice.expiry || '';
+              
+              // Store notice ID for update
+              noticeForm.dataset.editingId = id;
+              
+              // Change button text
+              const submitBtn = document.querySelector('.btn-primary');
+              if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-save"></i> Update Notice';
+              }
+
+              // Scroll to form
+              document.querySelector('.post-notice-card')?.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        });
+      }
+
+      // Category color mapping — NAGIE’S ANGELS STYLE
+      function getCategoryColor(category) {
+        const colors = {
+          'Urgent': '#d32f2f',        // Red
+          'Events': '#1976d2',        // Blue
+          'News': '#388e3c',          // Green
+          'Nationalism': '#f57c00',   // Orange
+          'Godliness': '#7b1fa2',     // Purple
+          'Integrity': '#00796b',     // Teal
+          'Excellence': '#c2185b',    // Pink
+          'Service': '#5d4037',       // Brown
+          'Attitude': '#fbc02d',      // Yellow
+          'Spelling': '#0288d1',      // Light Blue
+          'Intelligence': '#6a1b9a',  // Deep Purple
+          'Write': '#303f9f'          // Indigo
+        };
+        return colors[category] || '#8B00FF'; // Default to your school purple
+      }
+
+      // Logout
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          sessionStorage.removeItem('loggedInStudent');
+          window.location.href = 'index.html';
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

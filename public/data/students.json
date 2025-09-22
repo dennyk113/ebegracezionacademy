@@ -1,0 +1,50 @@
+[
+  {
+    "id": "EZ2025001",
+    "email": "parent1@ebegrace.edu.gh",
+    "password": "parent123",
+    "name": "Kwame Boateng",
+    "role": "parent",
+    "phone": "+233546792255",
+    "child": {
+      "name": "Ama Boateng",
+      "age": 4,
+      "class": "Nursery 2",
+      "teacher": "Mrs. Abena Mensah",
+      "attendance": "98%",
+      "reportCard": {
+        "term": "Term 1, 2025",
+        "subjects": [
+          { "subject": "Mathematics", "grade": "A", "score": 92 },
+          { "subject": "English", "grade": "B+", "score": 85 },
+          { "subject": "Bible Knowledge", "grade": "A", "score": 95 }
+        ]
+      }
+    }
+  },
+  {
+    "id": "ADMIN001",
+    "email": "admin@ebegrace.edu.gh",
+    "password": "admin123",
+    "name": "Rev. Dr. Franchesca K. Afoakwa",
+    "role": "admin",
+    "phone": "+233546792255"
+  },
+  {
+    "id": "TEACH001",
+    "email": "teacher@ebegrace.edu.gh",
+    "password": "teacher123",
+    "name": "Mrs. Abena Mensah",
+    "role": "teacher",  
+    "subject": "All Subjects",
+    "class": "All Levels"
+  },
+  {
+    "id": "PARENT001",
+    "email": "parent1@ebegrace.edu.gh",
+    "password": "parent123",
+    "name": "Kwame Boateng",
+    "role": "parent",  
+    "phone": "+233546792255"
+  }
+]

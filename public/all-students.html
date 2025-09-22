@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Students Directory — Ebegrace Zion Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* =============================================
+       ALL STUDENTS DIRECTORY — NAGIE’S ANGELS STYLE
+       ============================================= */
+
+    .students-hero {
+      background: linear-gradient(135deg, #8B00FF, #FF6B9D);
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .students-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+      font-weight: 300;
+    }
+
+    .students-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      color: #8B00FF;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #FFA500;
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+
+    /* SEARCH & FILTER BAR */
+    .search-section {
+      background: #f9f9ff;
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .search-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: end;
+    }
+
+    .search-field {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .search-field label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .search-field input,
+    .search-field select {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #e0e0ff;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+
+    .search-btn {
+      background: #8B00FF;
+      color: white;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+
+    .search-btn:hover {
+      background: #6a00cc;
+    }
+
+    /* STUDENTS GRID */
+    .students-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .student-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-left: 5px solid #FFA500;
+      transition: transform 0.3s;
+    }
+
+    .student-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .student-card h3 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .student-info {
+      margin: 20px 0;
+    }
+
+    .student-info p {
+      margin: 8px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .student-info strong {
+      color: #5a3a8c;
+      min-width: 120px;
+    }
+
+    /* EXPORT BUTTON */
+    .export-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .export-btn {
+      background: #FFA500;
+      color: white;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .export-btn:hover {
+      background: #e69500;
+      transform: translateY(-2px);
+    }
+
+    /* STATS BADGES */
+    .stats-badges {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+
+    .stat-badge {
+      background: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .stat-badge h4 {
+      color: #8B00FF;
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .stat-badge p {
+      margin: 5px 0 0;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .students-hero {
+        padding: 80px 20px 60px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      .search-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .students-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Ebegrace Zion Academy Logo">
+      <h1>EBEGRACE ZION ACADEMY</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#" id="logoutBtn" class="btn-logout">LOGOUT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="students-hero">
+    <div class="hero-text">
+      <h1>All Students Directory</h1>
+      <p>Manage 1000+ learners from Pre-School to JHS — Inspired by Nagie’s Angels Educational Centre</p>
+    </div>
+  </section>
+
+  <main class="students-main">
+
+    <!-- STATS BADGES -->
+    <div class="stats-badges">
+      <div class="stat-badge">
+        <h4>1,024</h4>
+        <p>Total Students</p>
+      </div>
+      <div class="stat-badge">
+        <h4>600+</h4>
+        <p>Alumni</p>
+      </div>
+      <div class="stat-badge">
+        <h4>16+</h4>
+        <p>Regions of Ghana</p>
+      </div>
+    </div>
+
+    <!-- SEARCH & FILTER -->
+    <section class="search-section">
+      <h3>Search & Filter Students</h3>
+      <div class="search-container">
+        <div class="search-field">
+          <label for="searchName">Search by Name/ID</label>
+          <input type="text" id="searchName" placeholder="e.g., Kwame Boateng or EZ2025001">
+        </div>
+        <div class="search-field">
+          <label for="filterClass">Filter by Class</label>
+          <select id="filterClass">
+            <option value="">All Classes</option>
+            <option value="Pre-School">Pre-School</option>
+            <option value="Primary">Primary</option>
+            <option value="JHS">JHS</option>
+          </select>
+        </div>
+        <div class="search-field">
+          <label for="filterRegion">Filter by Region</label>
+          <select id="filterRegion">
+            <option value="">All Regions</option>
+            <option value="Greater Accra">Greater Accra</option>
+            <option value="Ashanti">Ashanti</option>
+            <option value="Western">Western</option>
+            <option value="Central">Central</option>
+            <option value="Eastern">Eastern</option>
+            <option value="Volta">Volta</option>
+            <option value="Northern">Northern</option>
+            <option value="Upper East">Upper East</option>
+            <option value="Upper West">Upper West</option>
+            <option value="Brong-Ahafo">Brong-Ahafo</option>
+            <option value="Savannah">Savannah</option>
+            <option value="North East">North East</option>
+            <option value="Bono">Bono</option>
+            <option value="Ahafo">Ahafo</option>
+            <option value="Oti">Oti</option>
+            <option value="Western North">Western North</option>
+          </select>
+        </div>
+        <button class="search-btn" id="searchBtn">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    </section>
+
+    <!-- EXPORT BUTTON -->
+    <div class="export-section">
+      <button class="export-btn" id="exportBtn">
+        <i class="fas fa-file-excel"></i> Export to Excel
+      </button>
+    </div>
+
+    <!-- STUDENTS GRID -->
+    <h2 class="section-title">Student List</h2>
+    <div class="students-grid" id="studentsGrid">
+      <!-- Dynamically populated -->
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="school-info">
+        <h4>Ebegrace Zion Academy</h4>
+        <p>Principal: Rev. Dr. Franchesca K. Afoakwa</p>
+        <p>Email: nagiesangels@yahoo.com</p>
+      </div>
+      <div class="quick-links">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="student-portal.html">School Portal</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Ebegrace Zion Academy. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(sessionStorage.getItem('loggedInStudent'));
+      if (!user || user.role !== 'admin') {
+        alert('⛔ Access denied. Admins only.');
+        window.location.href = 'index.html';
+        return;
+      }
+
+      // Sample student data — replace with real data from backend
+      const sampleStudents = [
+        {
+          id: "EZ2025001",
+          name: "Kwame Boateng",
+          age: 6,
+          class: "Primary 1",
+          level: "Primary",
+          parent: "Mrs. Abena Mensah",
+          phone: "+233546792255",
+          region: "Greater Accra",
+          email: "parent1@ebegrace.edu.gh",
+          enrollmentDate: "2025-01-15"
+        },
+        {
+          id: "EZ2025002",
+          name: "Ama Serwaa",
+          age: 4,
+          class: "Nursery 2",
+          level: "Pre-School",
+          parent: "Mr. Kwadwo Asante",
+          phone: "+233241234567",
+          region: "Ashanti",
+          email: "parent2@ebegrace.edu.gh",
+          enrollmentDate: "2025-02-01"
+        },
+        {
+          id: "EZ2025003",
+          name: "Kofi Mensah",
+          age: 13,
+          class: "JHS 2",
+          level: "JHS",
+          parent: "Madam Efia Darko",
+          phone: "+233207890123",
+          region: "Western",
+          email: "parent3@ebegrace.edu.gh",
+          enrollmentDate: "2024-09-05"
+        },
+        {
+          id: "EZ2025004",
+          name: "Esi Adjei",
+          age: 5,
+          class: "KG 1",
+          level: "Pre-School",
+          parent: "Dr. Kofi Adjei",
+          phone: "+233264567890",
+          region: "Central",
+          email: "parent4@ebegrace.edu.gh",
+          enrollmentDate: "2025-03-10"
+        },
+        {
+          id: "EZ2025005",
+          name: "Yaw Asare",
+          age: 11,
+          class: "Primary 5",
+          level: "Primary",
+          parent: "Mrs. Akosua Asare",
+          phone: "+233501234567",
+          region: "Eastern",
+          email: "parent5@ebegrace.edu.gh",
+          enrollmentDate: "2024-01-20"
+        }
+      ];
+
+      // Display all students initially
+      displayStudents(sampleStudents);
+
+      // Search button handler
+      document.getElementById('searchBtn').addEventListener('click', () => {
+        const searchTerm = document.getElementById('searchName').value.toLowerCase();
+        const classFilter = document.getElementById('filterClass').value;
+        const regionFilter = document.getElementById('filterRegion').value;
+
+        const filtered = sampleStudents.filter(student => {
+          const matchesSearch = student.name.toLowerCase().includes(searchTerm) || 
+                               student.id.toLowerCase().includes(searchTerm);
+          const matchesClass = !classFilter || student.level === classFilter;
+          const matchesRegion = !regionFilter || student.region === regionFilter;
+
+          return matchesSearch && matchesClass && matchesRegion;
+        });
+
+        displayStudents(filtered);
+      });
+
+      // Export to Excel
+      document.getElementById('exportBtn').addEventListener('click', () => {
+        exportToExcel(sampleStudents);
+      });
+
+      // Logout
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        sessionStorage.removeItem('loggedInStudent');
+        window.location.href = 'index.html';
+      });
+    });
+
+    function displayStudents(students) {
+      const container = document.getElementById('studentsGrid');
+      if (!container) return;
+
+      container.innerHTML = '';
+
+      if (students.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #888;">
+            <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h3>No students found</h3>
+            <p>Try adjusting your search or filter criteria.</p>
+          </div>
+        `;
+        return;
+      }
+
+      students.forEach(student => {
+        const card = document.createElement('div');
+        card.className = 'student-card';
+
+        card.innerHTML = `
+          <h3>${student.name}</h3>
+          <div class="student-info">
+            <p><strong>ID:</strong> ${student.id}</p>
+            <p><strong>Age:</strong> ${student.age}</p>
+            <p><strong>Class:</strong> ${student.class}</p>
+            <p><strong>Level:</strong> ${student.level}</p>
+            <p><strong>Parent:</strong> ${student.parent}</p>
+            <p><strong>Phone:</strong> ${student.phone}</p>
+            <p><strong>Region:</strong> ${student.region}</p>
+            <p><strong>Email:</strong> ${student.email}</p>
+            <p><strong>Enrolled:</strong> ${new Date(student.enrollmentDate).toLocaleDateString()}</p>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function exportToExcel(students) {
+      // Create CSV content
+      const headers = [
+        'ID', 'Name', 'Age', 'Class', 'Level', 'Parent', 
+        'Phone', 'Region', 'Email', 'Enrollment Date'
+      ];
+      
+      const csvContent = [
+        headers.join(','),
+        ...students.map(s => [
+          s.id,
+          `"${s.name}"`,
+          s.age,
+          `"${s.class}"`,
+          `"${s.level}"`,
+          `"${s.parent}"`,
+          s.phone,
+          `"${s.region}"`,
+          s.email,
+          new Date(s.enrollmentDate).toLocaleDateString()
+        ].join(','))
+      ].join('\n');
+
+      // Create download link
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'ebegrace_zion_students_directory.csv');
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+
+</body>
+</html>

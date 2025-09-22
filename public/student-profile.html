@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Profile — Ebegrace Zion Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* =============================================
+       STUDENT PROFILE — NAGIE’S ANGELS STYLE
+       ============================================= */
+
+    .profile-hero {
+      background: linear-gradient(135deg, #8B00FF, #FF6B9D);
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .profile-main {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    /* PROFILE HEADER */
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 2px solid #f0f0ff;
+    }
+
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .profile-info {
+      flex: 1;
+    }
+
+    .profile-info h2 {
+      color: #333;
+      font-size: 2.2rem;
+      margin: 0 0 10px;
+    }
+
+    .profile-info p {
+      margin: 5px 0;
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    .profile-info .status {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .status-active {
+      background: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #c8e6c9;
+    }
+
+    /* TABS */
+    .profile-tabs {
+      display: flex;
+      gap: 20px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: #f0f0ff;
+      color: #5a3a8c;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .tab-btn.active {
+      background: #8B00FF;
+      color: white;
+    }
+
+    .tab-btn:hover:not(.active) {
+      background: #e6e6ff;
+    }
+
+    /* TAB CONTENT */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* REPORT CARD */
+    .report-card {
+      background: #f9f9ff;
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+    }
+
+    .report-card h3 {
+      color: #8B00FF;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .report-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .report-table th,
+    .report-table td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .report-table th {
+      background: #8B00FF;
+      color: white;
+    }
+
+    .report-table tr:nth-child(even) {
+      background: #fafaff;
+    }
+
+    /* ATTENDANCE */
+    .attendance-chart {
+      background: #f9f9ff;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .attendance-percent {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #8B00FF;
+      margin: 20px 0;
+    }
+
+    /* PARENT INFO */
+    .parent-info {
+      background: #f9f9ff;
+      padding: 30px;
+      border-radius: 20px;
+    }
+
+    .parent-info h3 {
+      color: #8B00FF;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .parent-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .parent-details p {
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .parent-details strong {
+      color: #5a3a8c;
+    }
+
+    /* EDIT BUTTON */
+    .edit-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .edit-btn {
+      background: #FFA500;
+      color: white;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .edit-btn:hover {
+      background: #e69500;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-details {
+        grid-template-columns: 1fr;
+      }
+
+      .parent-details {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Ebegrace Zion Academy Logo">
+      <h1>EBEGRACE ZION ACADEMY</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#" id="logoutBtn" class="btn-logout">LOGOUT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="profile-hero">
+    <div class="hero-text">
+      <h1>Student Profile</h1>
+      <p>View academic records, attendance, and parent information</p>
+    </div>
+  </section>
+
+  <main class="profile-main">
+
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+      <img src="images/student-photo.jpg" alt="Student Photo" class="profile-photo" id="studentPhoto">
+      <div class="profile-info">
+        <h2 id="studentName">Kwame Boateng</h2>
+        <p><strong>ID:</strong> <span id="studentId">EZ2025001</span></p>
+        <p><strong>Age:</strong> <span id="studentAge">6</span> years</p>
+        <p><strong>Class:</strong> <span id="studentClass">Primary 1</span></p>
+        <p><strong>Level:</strong> <span id="studentLevel">Primary</span></p>
+        <p><strong>Enrolled:</strong> <span id="enrollmentDate">January 15, 2025</span></p>
+        <span class="status status-active">Active Student</span>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="profile-tabs">
+      <button class="tab-btn active" data-tab="report">Report Card</button>
+      <button class="tab-btn" data-tab="attendance">Attendance</button>
+      <button class="tab-btn" data-tab="parent">Parent Info</button>
+    </div>
+
+    <!-- REPORT CARD TAB -->
+    <div class="tab-content active" id="report-tab">
+      <div class="report-card">
+        <h3>Term 1 Report Card (2025)</h3>
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Grade</th>
+              <th>Score</th>
+              <th>Teacher Comment</th>
+            </tr>
+          </thead>
+          <tbody id="reportBody">
+            <tr>
+              <td>Mathematics</td>
+              <td>A</td>
+              <td>92%</td>
+              <td>Excellent problem-solving skills</td>
+            </tr>
+            <tr>
+              <td>English</td>
+              <td>B+</td>
+              <td>85%</td>
+              <td>Good reading comprehension</td>
+            </tr>
+            <tr>
+              <td>Science</td>
+              <td>A-</td>
+              <td>88%</td>
+              <td>Curious and engaged learner</td>
+            </tr>
+            <tr>
+              <td>Bible Knowledge</td>
+              <td>A</td>
+              <td>95%</td>
+              <td>Strong moral character</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ATTENDANCE TAB -->
+    <div class="tab-content" id="attendance-tab">
+      <div class="attendance-chart">
+        <h3>Term 1 Attendance (2025)</h3>
+        <div class="attendance-percent" id="attendancePercent">98%</div>
+        <p>Present: 89 days out of 91 school days</p>
+        <p>Absent: 2 days</p>
+      </div>
+    </div>
+
+    <!-- PARENT INFO TAB -->
+    <div class="tab-content" id="parent-tab">
+      <div class="parent-info">
+        <h3>Parent/Guardian Information</h3>
+        <div class="parent-details">
+          <div>
+            <p><strong>Parent Name:</strong> <span id="parentName">Mrs. Abena Mensah</span></p>
+            <p><strong>Phone:</strong> <span id="parentPhone">+233546792255</span></p>
+            <p><strong>Email:</strong> <span id="parentEmail">parent1@ebegrace.edu.gh</span></p>
+          </div>
+          <div>
+            <p><strong>Region:</strong> <span id="studentRegion">Greater Accra</span></p>
+            <p><strong>Address:</strong> <span id="parentAddress">Adenta, Accra</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDIT BUTTON (ADMIN ONLY) -->
+    <div class="edit-section" id="editSection">
+      <button class="edit-btn" id="editBtn">
+        <i class="fas fa-edit"></i> Edit Student Information
+      </button>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="school-info">
+        <h4>Ebegrace Zion Academy</h4>
+        <p>Principal: Rev. Dr. Franchesca K. Afoakwa</p>
+        <p>Email: nagiesangels@yahoo.com</p>
+      </div>
+      <div class="quick-links">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="student-portal.html">School Portal</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Ebegrace Zion Academy. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(sessionStorage.getItem('loggedInStudent'));
+      if (!user) {
+        alert('⛔ Please log in first.');
+        window.location.href = 'student-portal.html';
+        return;
+      }
+
+      // Get student ID from URL parameter (e.g., ?id=EZ2025001)
+// Inside DOMContentLoaded in student-profile.html
+const urlParams = new URLSearchParams(window.location.search);
+const studentId = urlParams.get('id');
+
+if (!studentId) {
+  alert('❌ No student ID specified. Redirecting to All Students Directory.');
+  window.location.href = 'all-students.html'; // ← REDIRECT INSTEAD OF ERROR
+  return;
+}
+// Sample student data — inspired by Nagie’s Angels PDF
+const sampleStudents = {
+  "EZ2025001": {
+    id: "EZ2025001",
+    name: "Kwame Boateng",
+    age: 6,
+    class: "Primary 1",
+    level: "Primary", // ← Matches "PRIMARY" in PDF
+    region: "Greater Accra", // ← 1 of 16 regions (PDF)
+    parent: {
+      name: "Mrs. Abena Mensah",
+      phone: "+233546792255",
+      email: "parent1@ebegrace.edu.gh"
+    },
+    enrollmentDate: "2025-01-15",
+    attendance: "98%", // ← "positive attitude towards life" (PDF)
+    photo: "images/student-photo.jpg",
+    reportCard: [
+      {
+        term: "Term 1, 2025",
+        subjects: [
+          { 
+            subject: "Mathematics", 
+            grade: "A", 
+            comment: "Excellent problem-solving skills — shows intelligence and diligence" // ← PDF keywords
+          },
+          { 
+            subject: "English", 
+            grade: "B+", 
+            comment: "Good reading comprehension — positive attitude towards learning" // ← PDF keywords
+          },
+          { 
+            subject: "Bible Knowledge", 
+            grade: "A", 
+            comment: "Strong moral character — exemplifies godliness" // ← PDF keywords
+          }
+        ]
+      }
+    ]
+  }
+};
+
+      // Populate profile
+      document.getElementById('studentName').textContent = sampleStudent.name;
+      document.getElementById('studentId').textContent = sampleStudent.id;
+      document.getElementById('studentAge').textContent = sampleStudent.age;
+      document.getElementById('studentClass').textContent = sampleStudent.class;
+      document.getElementById('studentLevel').textContent = sampleStudent.level;
+      document.getElementById('enrollmentDate').textContent = new Date(sampleStudent.enrollmentDate).toLocaleDateString();
+      document.getElementById('studentPhoto').src = sampleStudent.photo;
+      document.getElementById('attendancePercent').textContent = sampleStudent.attendance;
+      document.getElementById('parentName').textContent = sampleStudent.parent;
+      document.getElementById('parentPhone').textContent = sampleStudent.phone;
+      document.getElementById('parentEmail').textContent = sampleStudent.email;
+      document.getElementById('studentRegion').textContent = sampleStudent.region;
+      document.getElementById('parentAddress').textContent = sampleStudent.address;
+
+      // Populate report card
+      const reportBody = document.getElementById('reportBody');
+      reportBody.innerHTML = '';
+      sampleStudent.reportCard.forEach(subject => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${subject.subject}</td>
+          <td>${subject.grade}</td>
+          <td>${subject.score}%</td>
+          <td>${subject.comment}</td>
+        `;
+        reportBody.appendChild(row);
+      });
+
+      // Tab switching
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+          
+          btn.classList.add('active');
+          const tabId = btn.getAttribute('data-tab');
+          document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
+      });
+
+      // Edit button (show only for admin)
+      if (user.role === 'admin') {
+        document.getElementById('editBtn').addEventListener('click', () => {
+          // Redirect to edit page
+          window.location.href = `edit-student.html?id=${studentId}`;
+        });
+      } else {
+        // Hide edit button for non-admins
+        document.getElementById('editSection').style.display = 'none';
+      }
+
+      // Logout
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        sessionStorage.removeItem('loggedInStudent');
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join Our Team — Ebegrace Zion Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* =============================================
+       CAREERS PAGE — NAGIE’S ANGELS INSPIRED
+       ============================================= */
+
+    .careers-hero {
+      background: linear-gradient(135deg, #8B00FF, #FF6B9D);
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .careers-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+      font-weight: 300;
+    }
+
+    .motto {
+      font-style: italic;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .careers-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #8B00FF;
+      font-size: 2.2rem;
+      margin: 60px 0 40px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #FFA500;
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+
+    /* WHY TEACH WITH US */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 60px 0;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 2px solid #f0f0ff;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(139, 0, 255, 0.15);
+      border-color: #8B00FF;
+    }
+
+    .feature-card i {
+      font-size: 2.5rem;
+      color: #8B00FF;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      color: #333;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+    }
+
+    /* CURRENT OPENINGS */
+    .openings-section {
+      background: #f9f9ff;
+      padding: 60px 0;
+      border-radius: 20px;
+      margin: 60px 0;
+    }
+
+    .job-posting {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      border-left: 4px solid #FFA500;
+    }
+
+    .job-posting h3 {
+      color: #8B00FF;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .job-posting p {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* HOW TO APPLY */
+    .apply-section {
+      background: #333;
+      color: white;
+      padding: 60px 0;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .apply-section h2 {
+      color: white;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .apply-instructions {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .apply-email {
+      display: inline-block;
+      background: #8B00FF;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 20px 0;
+      font-size: 1.1rem;
+      transition: background 0.3s;
+    }
+
+    .apply-email:hover {
+      background: #6a00cc;
+    }
+
+    .principal-section {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin: 80px 0;
+      background: #fafaff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .principal-signature {
+      text-align: center;
+    }
+
+    .principal-signature img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .principal-message h3 {
+      color: #8B00FF;
+      margin-bottom: 20px;
+    }
+
+    .principal-message p {
+      color: #555;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .careers-hero {
+        padding: 80px 20px 60px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      .principal-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .apply-instructions {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Ebegrace Zion Academy Logo">
+      <h1>EBEGRACE ZION ACADEMY</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="admissions.html">ADMISSIONS</a></li>
+        <li><a href="student-portal.html">SCHOOL PORTAL</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="careers.html" class="active">CAREERS</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="careers-hero">
+    <div class="hero-text">
+      <h1>Join Our Team of Excellence</h1>
+      <p>Where Faith, Knowledge, and Character Shape Future Leaders</p>
+      <p class="motto">Motto: Knowledge and Determination</p>
+    </div>
+  </section>
+
+  <main class="careers-main">
+
+    <!-- WHY TEACH WITH US -->
+    <section>
+      <h2 class="section-title">Why Teach at Ebegrace Zion Academy?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-heart"></i>
+          <h3>Christ-Centered Mission</h3>
+          <p>Teach in an environment where godliness, integrity, and service are core values.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-brain"></i>
+          <h3>Grow as an Educator</h3>
+          <p>Professional development, modern resources, and supportive leadership.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>Impact Young Lives</h3>
+          <p>Shape the next generation of intelligent, diligent, and godly leaders.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-hand-holding-heart"></i>
+          <h3>Child-Centered Learning</h3>
+          <p>Inspired by Nagie’s Angels — focus on discovering each child’s unique talents.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-coins"></i>
+          <h3>Competitive Benefits</h3>
+          <p>Attractive salary, health benefits, and a joyful, collaborative community.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-globe-africa"></i>
+          <h3>Regional Impact</h3>
+          <p>Connect with families across Ghana — just like Nagie’s Angels’ 16 regions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPAL'S MESSAGE -->
+    <section class="principal-section">
+      <div class="principal-signature">
+        <img src="images/logo.png" alt="Principal's Signature">
+        <h4>Rev. Dr. Grace A. Mensah</h4>
+        <p>Principal</p>
+      </div>
+      <div class="principal-message">
+        <h3>A Message From Our Principal</h3>
+        <p>
+          “At Ebegrace Zion Academy, we believe that teaching is a calling — not just a career. We seek educators who are passionate, godly, and committed to nurturing intelligence and character in every child. If you feel called to join our mission, we welcome you to apply.”
+        </p>
+      </div>
+    </section>
+
+    <!-- CURRENT OPENINGS -->
+    <section class="openings-section">
+      <h2 class="section-title">Current Openings</h2>
+      
+      <div class="job-posting">
+        <h3>Pre-School Teacher (Full-Time)</h3>
+        <p><strong>Requirements:</strong> Diploma in Early Childhood Education, 2+ years experience, love for children, patient and creative.</p>
+        <p><strong>Responsibilities:</strong> Plan play-based learning activities, maintain safe classroom environment, communicate with parents, nurture early literacy and social skills.</p>
+      </div>
+      
+      <div class="job-posting">
+        <h3>Primary School Teacher (Math/Science)</h3>
+        
+        <div class="job-posting">
+        <h3>Grade Two Facilitator</h3>
+        <p><strong>Requirements:</strong> Degree in English/Education, BECE/WASSCE teaching experience, excellent communication skills.</p>
+        <p><strong>Responsibilities:</strong> Prepare students for BECE, develop reading/writing skills, lead debates and drama activities.</p>
+      </div>
+
+      <div class="job-posting">
+        <h3>Grade One Facilitator</h3>
+        <p><strong>Requirements:</strong> Degree in English/Education, BECE/WASSCE teaching experience, excellent communication skills.</p>
+        <p><strong>Responsibilities:</strong> Prepare students for BECE, develop reading/writing skills, lead debates and drama activities.</p>
+      </div>
+      </div>
+      
+      <div class="job-posting">
+        <h3>JHS English & Literature Teacher</h3>
+        <p><strong>Requirements:</strong> Degree in English/Education, BECE/WASSCE teaching experience, excellent communication skills.</p>
+        <p><strong>Responsibilities:</strong> Prepare students for BECE, develop reading/writing skills, lead debates and drama activities.</p>
+      </div>
+    </section>
+
+    <!-- HOW TO APPLY -->
+    <section class="apply-section">
+      <h2>How to Apply</h2>
+      <div class="apply-instructions">
+        <p>📧 Email your <strong>CV</strong> and <strong>Cover Letter</strong> to:</p>
+        <a href="mailto:hr@ebegracezion.edu.gh" class="apply-email">
+          hr@ebegracezion.edu.gh
+        </a>
+        <p>📌 Subject Line: <strong>“Teacher Application – [Your Full Name] – [Position]”</strong></p>
+        <p>⏳ We review applications weekly. Only shortlisted candidates will be contacted.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="school-info">
+        <h4>Ebegrace Zion Academy</h4>
+        <p>Motto: Knowledge and Determination</p>
+        <p>Slogan: Home of the Intelligence</p>
+      </div>
+      <div class="quick-links">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="student-portal.html">School Portal</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Ebegrace Zion Academy. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

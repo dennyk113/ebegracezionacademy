@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Admissions — Ebegrace Zion Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* =============================================
+       ADMIN ADMISSIONS — NAGIE’S ANGELS INSPIRED
+       ============================================= */
+
+    .admin-hero {
+      background: linear-gradient(135deg, #8B00FF, #FF6B9D);
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .admin-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+      font-weight: 300;
+    }
+
+    .admin-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      color: #8B00FF;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #FFA500;
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+
+    /* APPLICATIONS GRID */
+    .applications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 30px;
+    }
+
+    /* APPLICATION CARD */
+    .application-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-left: 5px solid #FFA500;
+      position: relative;
+      transition: transform 0.3s;
+    }
+
+    .application-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .application-card h3 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    /* APPLICATION INFO */
+    .application-info {
+      margin: 20px 0;
+      padding: 20px;
+      background: #f9f9ff;
+      border-radius: 15px;
+    }
+
+    .application-info p {
+      margin: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .application-info strong {
+      color: #5a3a8c;
+      min-width: 150px;
+    }
+
+    /* BUTTONS */
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .btn-accept {
+      background: #4caf50;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .btn-reject {
+      background: #f44336;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .btn-accept:hover {
+      background: #388e3c;
+      transform: translateY(-2px);
+    }
+
+    .btn-reject:hover {
+      background: #d32f2f;
+      transform: translateY(-2px);
+    }
+
+    /* STATUS BADGE */
+    .status-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .status-pending {
+      background: #fff3e0;
+      color: #e65100;
+      border: 1px solid #ffe0b2;
+    }
+
+    .status-accepted {
+      background: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #c8e6c9;
+    }
+
+    .status-rejected {
+      background: #ffebee;
+      color: #c62828;
+      border: 1px solid #ffcdd2;
+    }
+
+    /* NO APPLICATIONS MESSAGE */
+    .no-applications {
+      text-align: center;
+      padding: 60px 20px;
+      color: #888;
+      font-size: 1.2rem;
+      background: #fafaff;
+      border-radius: 20px;
+      margin: 40px 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .admin-hero {
+        padding: 80px 20px 60px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      .applications-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .application-info p {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .application-info strong {
+        min-width: auto;
+        margin-bottom: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Ebegrace Zion Academy Logo">
+      <h1>EBEGRACE ZION ACADEMY</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#" id="logoutBtn" class="btn-logout">LOGOUT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="admin-hero">
+    <div class="hero-text">
+      <h1>Admin Admissions Management</h1>
+      <p>Review, Accept, or Reject New Applications</p>
+    </div>
+  </section>
+
+  <main class="admin-main">
+    <h2 class="section-title">New Applications</h2>
+    <div class="applications-grid" id="applicationsContainer">
+      <!-- Dynamically populated by JavaScript -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="school-info">
+        <h4>Ebegrace Zion Academy</h4>
+        <p>Principal: Rev. Dr. Franchesca K. Afoakwa</p>
+        <p>Email: nagiesangels@yahoo.com</p>
+      </div>
+      <div class="quick-links">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="student-portal.html">School Portal</a></li>
+            <li><a href="student-profile.html">Students-Profile</a></li>
+            <li><a href="all-students.html">All Students</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Ebegrace Zion Academy. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(sessionStorage.getItem('loggedInStudent'));
+      if (!user || user.role !== 'admin') {
+        alert('Access denied. Admins only.');
+        window.location.href = 'index.html';
+        return;
+      }
+
+      displayApplications();
+
+      // Logout handler
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        sessionStorage.removeItem('loggedInStudent');
+        window.location.href = 'index.html';
+      });
+    });
+
+    function displayApplications() {
+      const container = document.getElementById('applicationsContainer');
+      if (!container) return;
+
+      // Load applications from localStorage
+      const saved = localStorage.getItem('admissions');
+      const applications = saved ? JSON.parse(saved) : [];
+
+      // Filter only pending applications
+      const pending = applications.filter(app => app.status === 'Pending');
+
+      if (pending.length === 0) {
+        container.innerHTML = `
+          <div class="no-applications">
+            <i class="fas fa-clipboard-check" style="font-size: 3rem; color: #8B00FF; margin-bottom: 20px;"></i>
+            <h3>No Pending Applications</h3>
+            <p>All applications have been processed.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = '';
+
+      pending.forEach((app, index) => {
+        const card = document.createElement('div');
+        card.className = 'application-card';
+
+        card.innerHTML = `
+          <div class="status-badge status-pending">PENDING</div>
+          <h3>Application #${index + 1}</h3>
+          <div class="application-info">
+            <p><strong>Child's Name:</strong> ${app.childName}</p>
+            <p><strong>Date of Birth:</strong> ${new Date(app.dob).toLocaleDateString()}</p>
+            <p><strong>Program:</strong> ${app.program}</p>
+            <p><strong>Parent Name:</strong> ${app.parentName}</p>
+            <p><strong>Phone:</strong> ${app.phone}</p>
+            <p><strong>Email:</strong> ${app.email}</p>
+            <p><strong>Address:</strong> ${app.address}</p>
+            <p><strong>Submitted:</strong> ${new Date(app.submittedAt).toLocaleString()}</p>
+          </div>
+          <div class="btn-group">
+            <button class="btn-accept" data-index="${index}">
+              <i class="fas fa-check"></i> Accept
+            </button>
+            <button class="btn-reject" data-index="${index}">
+              <i class="fas fa-times"></i> Reject
+            </button>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      // Add event listeners for Accept buttons
+      document.querySelectorAll('.btn-accept').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const index = parseInt(btn.getAttribute('data-index'));
+          acceptApplication(index);
+        });
+      });
+
+      // Add event listeners for Reject buttons
+      document.querySelectorAll('.btn-reject').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const index = parseInt(btn.getAttribute('data-index'));
+          rejectApplication(index);
+        });
+      });
+    }
+
+    function acceptApplication(index) {
+      // Load all applications
+      const saved = localStorage.getItem('admissions');
+      let applications = saved ? JSON.parse(saved) : [];
+
+      // Get pending applications
+      const pending = applications.filter(app => app.status === 'Pending');
+      const targetApp = pending[index];
+
+      if (!targetApp) {
+        alert('Application not found.');
+        return;
+      }
+
+      // Generate secure random password
+      const parentPassword = generatePassword(8);
+      const loginUrl = window.location.origin + '/student-portal.html';
+
+      // Find the full index in original array
+      const fullIndex = applications.findIndex(app => 
+        app.childName === targetApp.childName && 
+        app.email === targetApp.email && 
+        app.status === 'Pending'
+      );
+
+      if (fullIndex !== -1) {
+        // Update application status and add login info
+        applications[fullIndex].status = 'Accepted';
+        applications[fullIndex].loginEmail = targetApp.email;
+        applications[fullIndex].loginPassword = parentPassword;
+        localStorage.setItem('admissions', JSON.stringify(applications));
+
+        // Add to students database (mock)
+        let students = JSON.parse(localStorage.getItem('schoolUsers') || '[]');
+        students.push({
+          id: 'P' + Date.now().toString().slice(-6),
+          email: targetApp.email,
+          password: parentPassword,
+          name: targetApp.parentName,
+          role: 'parent',
+          phone: targetApp.phone,
+          child: {
+            name: targetApp.childName,
+            class: targetApp.program,
+            age: getAgeFromDOB(targetApp.dob)
+          }
+        });
+        localStorage.setItem('schoolUsers', JSON.stringify(students));
+
+        // Send acceptance email
+        sendAcceptanceEmail(targetApp.email, parentPassword, loginUrl);
+
+        // Show success message
+        alert('✅ Application accepted! Login credentials sent to parent.');
+        
+        // Refresh display
+        displayApplications();
+      }
+    }
+
+    function rejectApplication(index) {
+      // Load all applications
+      const saved = localStorage.getItem('admissions');
+      let applications = saved ? JSON.parse(saved) : [];
+
+      // Get pending applications
+      const pending = applications.filter(app => app.status === 'Pending');
+      const targetApp = pending[index];
+
+      if (!targetApp) {
+        alert('Application not found.');
+        return;
+      }
+
+      // Find the full index in original array
+      const fullIndex = applications.findIndex(app => 
+        app.childName === targetApp.childName && 
+        app.email === targetApp.email && 
+        app.status === 'Pending'
+      );
+
+      if (fullIndex !== -1) {
+        // Update application status
+        applications[fullIndex].status = 'Rejected';
+        localStorage.setItem('admissions', JSON.stringify(applications));
+
+        // Send rejection email
+        sendRejectionEmail(targetApp.email);
+
+        // Show success message
+        alert('❌ Application rejected. Notification sent to parent.');
+        
+        // Refresh display
+        displayApplications();
+      }
+    }
+
+    function generatePassword(length) {
+      const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let password = '';
+      for (let i = 0; i < length; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return password;
+    }
+
+    function getAgeFromDOB(dob) {
+      const today = new Date();
+      const birthDate = new Date(dob);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      return age;
+    }
+
+    function sendAcceptanceEmail(email, password, loginUrl) {
+      const emailData = {
+        to: email,
+        subject: "Your Ebegrace Zion Academy Parent Portal Login",
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <h2 style="color: #8B00FF; text-align: center;">Welcome to Ebegrace Zion Academy!</h2>
+            <p>Dear Parent,</p>
+            <p>Thank you for choosing Ebegrace Zion Academy. We are delighted to offer your child a place at our school.</p>
+            <p>Your Parent Portal login credentials are below:</p>
+            <div style="background: #f5f0ff; padding: 20px; border-radius: 10px; margin: 20px 0; border: 1px solid #e0e0ff;">
+              <p><strong>📧 Email:</strong> ${email}</p>
+              <p><strong>🔑 Password:</strong> ${password}</p>
+              <p><strong>🌐 Login URL:</strong> <a href="${loginUrl}" style="color: #8B00FF; text-decoration: none; font-weight: bold;">Click Here to Login</a></p>
+            </div>
+            <p>Please log in to access your child's information, report cards, and school notices.</p>
+            <p>If you have any questions, please contact us at <a href="mailto:nagiesangels@yahoo.com" style="color: #8B00FF; text-decoration: none;">nagiesangels@yahoo.com</a>.</p>
+            <p>Warm regards,<br><strong>Ebegrace Zion Academy Admissions Team</strong></p>
+            <hr style="margin: 30px 0; border-color: #e0e0ff;">
+            <p style="font-size: 0.8rem; color: #666; text-align: center;">
+              Motto: Knowledge and Determination<br>
+              Slogan: Home of the Intelligence
+            </p>
+          </div>
+        `
+      };
+
+      // Send to backend
+      fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(emailData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          console.log('✅ Acceptance email sent successfully to', email);
+        } else {
+          console.error('❌ Failed to send acceptance email:', data.message);
+        }
+      })
+      .catch(error => {
+        console.error('❌ Email sending error:', error);
+      });
+    }
+
+    function sendRejectionEmail(email) {
+      const emailData = {
+        to: email,
+        subject: "Regarding Your Application to Ebegrace Zion Academy",
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <h2 style="color: #8B00FF; text-align: center;">Thank You for Your Interest</h2>
+            <p>Dear Parent,</p>
+            <p>Thank you for considering Ebegrace Zion Academy for your child's education.</p>
+            <p>We regret to inform you that we are unable to offer a place at this time. The decision was not made lightly, and we appreciate the time and effort you invested in the application process.</p>
+            <p>We wish you all the best in finding the right educational environment for your child.</p>
+            <p>If you would like feedback on your application, please contact us at <a href="mailto:nagiesangels@yahoo.com" style="color: #8B00FF; text-decoration: none;">nagiesangels@yahoo.com</a>.</p>
+            <p>Sincerely,<br><strong>Ebegrace Zion Academy Admissions Team</strong></p>
+            <hr style="margin: 30px 0; border-color: #e0e0ff;">
+            <p style="font-size: 0.8rem; color: #666; text-align: center;">
+              Motto: Knowledge and Determination<br>
+              Slogan: Home of the Intelligence
+            </p>
+          </div>
+        `
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(sessionStorage.getItem('loggedInStudent'));
+      if (!user || user.role !== 'admin') {
+        alert('Access denied. Admins only.');
+        window.location.href = 'index.html';
+        return;
+      }
+        });
+
+      // Logout
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        sessionStorage.removeItem('loggedInStudent');
+        window.location.href = 'index.html';
+      });
+
+      // Send to backend
+      fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(emailData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          console.log('✅ Rejection email sent successfully to', email);
+        } else {
+          console.error('❌ Failed to send rejection email:', data.message);
+        }
+      })
+      .catch(error => {
+        console.error('❌ Email sending error:', error);
+      });
+    }
+  </script>
+
+</body>
+</html>

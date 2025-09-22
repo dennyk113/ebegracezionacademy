@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Portal Login — Ebegrace Zion Academy</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* Portal-Specific Styles */
+        .portal-hero {
+            background: linear-gradient(135deg, #8B00FF, #FF6B9D);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portal-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin: 0.5rem 0;
+            font-weight: 300;
+        }
+
+        .motto {
+            font-style: italic;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .portal-main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 60px 20px;
+            background: #f9f9ff;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(139, 0, 255, 0.15);
+            border: 1px solid rgba(139, 0, 255, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            color: #8B00FF;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .login-box form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .login-box label {
+            text-align: left;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0ff;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .login-box input:focus {
+            outline: none;
+            border-color: #8B00FF;
+        }
+
+        .btn-primary {
+            background: #8B00FF;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background: #6a00cc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 0, 255, 0.3);
+        }
+
+        .help-text {
+            margin-top: 25px;
+            font-size: 0.95rem;
+        }
+
+        .help-text a {
+            color: #8B00FF;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .help-text a:hover {
+            text-decoration: underline;
+        }
+
+        .recent-notices {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .recent-notices h3 {
+            color: #8B00FF;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+
+        .notice-preview {
+            background: #f0f0ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #FFA500;
+        }
+
+        .notice-preview h4 {
+            margin: 0 0 8px;
+            color: #333;
+        }
+
+        .notice-preview p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-contact {
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact a {
+            color: #FFA500;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .portal-hero {
+                padding: 80px 20px 60px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .portal-main {
+                padding: 40px 20px;
+                gap: 30px;
+            }
+
+            .login-box,
+            .recent-notices {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="portal-hero">
+        <div class="hero-text">
+            <h1>Welcome to Ebegrace Zion Academy</h1>
+            <p>Where Faith, Excellence, and Character Meet</p>
+            <p class="motto">Motto: Knowledge and Determination</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="portal-main">
+
+        <!-- LOGIN BOX -->
+        <div class="login-box">
+            <h2><i class="fas fa-user-shield"></i> School Portal Login</h2>
+            <form id="loginForm">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required placeholder="e.g., parent@ebegrace.edu.gh">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" required placeholder="••••••••">
+
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+
+            <p class="help-text">
+                <a href="forgot-password.html"><i class="fas fa-key"></i> Forgot Password?</a>
+                <a href="admissions.html"><i class="fas fa-user-plus"></i> New? Apply Here</a>
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; padding: 20px; background: #f0f0ff; border-radius: 10px;">
+            <p><strong>Teacher? No login yet?</strong></p>
+            <p>Contact administration to get your portal credentials:</p>
+            <a href="mailto:nagiesangels@yahoo.com" class="btn-primary" style="background: #8B00FF;">
+                <i class="fas fa-envelope"></i> Email Admin
+            </a>
+        </div>
+
+        <!-- RECENT NOTICES -->
+        <div class="recent-notices">
+            <h3><i class="fas fa-bullhorn"></i> Recent School Notices</h3>
+
+            <div class="notice-preview">
+                <h4>📅 Term 2 Begins Monday</h4>
+                <p>All learners expected to resume June 2nd. Uniforms must be neat.</p>
+            </div>
+
+            <div class="notice-preview">
+                <h4>📚 Math Quiz Results</h4>
+                <p>Congratulations to top 3 scorers! Certificates awarded in assembly.</p>
+            </div>
+
+            <div class="notice-preview">
+                <h4>🙏 Chapel Service Tomorrow</h4>
+                <p>Theme: "Kindness is Strength". All learners bring Bibles.</p>
+            </div>
+
+            <div class="notice-preview">
+                <h4>⚠️ School Closed Tomorrow</h4>
+                <p>Due to public holiday. Resume Wednesday, June 4th.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Ebegrace Zion Academy</strong></p>
+        <p>Slogan: Home of the Intelligence</p>
+        <div class="footer-contact">
+            <p>Need help? Contact us at: <a href="mailto:ebegracezion@gmail.com">ebegracezion@gmail.com</a></p>
+            <p>Phone: <a href="tel:0546792255">0546 792 255</a></p>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9rem;">&copy; 2025 Ebegrace Zion Academy. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const email = document.getElementById('email')?.value || '';
+                    const password = document.getElementById('password')?.value || '';
+
+                    try {
+                        // Load students from JSON
+                        const response = await fetch('data/students.json');
+
+                        if (!response.ok) {
+                            throw new Error(`Failed to load user data. HTTP ${response.status}`);
+                        }
+
+                        const students = await response.json();
+
+                        // Find matching user
+                        const user = students.find(s => s.email === email && s.password === password);
+
+                        if (user) {
+                            // Save to session
+                            sessionStorage.setItem('loggedInStudent', JSON.stringify(user));
+
+                            // Redirect based on role — NAGIE’S ANGELS STYLE
+                            if (user.role === 'admin') {
+                                window.location.href = 'admin-admissions.html';
+                            } else if (user.role === 'teacher') {
+                                window.location.href = 'dashboard.html';
+                                 } else if (user.role === 'admin') {
+                                window.location.href = 'all-students.html';
+                            } else if (user.role === 'parent') {
+                                window.location.href = 'parent-dashboard.html';
+                            } else {
+                                window.location.href = 'index.html';
+                            }
+                        } else {
+                            alert('❌ Login failed. Please check your email and password.');
+                        }
+                    } catch (error) {
+                        console.error('Login error:', error);
+                        alert('❌ Error: Could not load user data. Please try again.\n\nMake sure you’re running this on a local server (not file://).');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

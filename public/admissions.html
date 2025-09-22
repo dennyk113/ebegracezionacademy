@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admissions — Ebegrace Zion Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* =============================================
+       ADMISSIONS PAGE — NAGIE’S ANGELS INSPIRED
+       ============================================= */
+
+    .admissions-hero {
+      background: linear-gradient(135deg, #8B00FF, #FFA500);
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .admissions-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+      font-weight: 300;
+    }
+
+    .admissions-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    /* ACADEMICS CARDS — NAGIE'S ANGELS STYLE */
+    .academics-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 60px 0;
+    }
+
+    .academics-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 2px solid #f0f0ff;
+    }
+
+    .academics-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(139, 0, 255, 0.15);
+      border-color: #8B00FF;
+    }
+
+    .academics-card h3 {
+      color: #8B00FF;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .academics-card p {
+      margin-bottom: 25px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 12px 28px;
+      background: transparent;
+      color: #8B00FF;
+      border: 2px solid #8B00FF;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: #8B00FF;
+      color: white;
+    }
+
+    /* APPLICATION FORM */
+    .application-section {
+      background: #f9f9ff;
+      padding: 60px 0;
+      margin: 60px 0;
+      border-radius: 20px;
+    }
+
+    .application-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .application-container h2 {
+      text-align: center;
+      color: #8B00FF;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .application-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-full {
+      grid-column: 1 / -1;
+    }
+
+    .application-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .application-form input,
+    .application-form select,
+    .application-form textarea {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #e0e0ff;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .application-form input:focus,
+    .application-form select:focus,
+    .application-form textarea:focus {
+      outline: none;
+      border-color: #8B00FF;
+    }
+
+    /* FILE UPLOAD */
+    .file-upload-wrapper {
+      width: 100%;
+      margin: 25px 0;
+    }
+
+    .file-upload-area {
+      width: 100%;
+      min-height: 140px;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      background: #fafaff;
+      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .file-upload-area:hover,
+    .file-upload-area.drag-over {
+      border-color: #8B00FF;
+      background: #f5f0ff;
+    }
+
+    .file-upload-area i {
+      font-size: 2.5rem;
+      color: #8B00FF;
+      margin-bottom: 15px;
+    }
+
+    .file-upload-area p {
+      margin: 5px 0;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .file-types {
+      font-size: 0.85rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    /* Hide default file input */
+    #documents {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+    }
+
+    /* File Preview */
+    .file-preview {
+      margin-top: 20px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 15px;
+    }
+
+    .preview-item {
+      background: white;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      position: relative;
+    }
+
+    .preview-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 5px;
+    }
+
+    .preview-item .file-name {
+      font-size: 0.8rem;
+      color: #555;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .preview-item .remove-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preview-item .remove-btn:hover {
+      background: #e60000;
+    }
+
+    /* SUBMIT BUTTON */
+    .btn-primary {
+      background: #8B00FF;
+      color: white;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      grid-column: 1 / -1;
+      margin-top: 20px;
+    }
+
+    .btn-primary:hover {
+      background: #6a00cc;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(139, 0, 255, 0.3);
+    }
+
+    /* WHY CHOOSE US */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin: 60px 0;
+    }
+
+    .feature-item {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-item i {
+      font-size: 2.5rem;
+      color: #8B00FF;
+      margin-bottom: 15px;
+    }
+
+    .feature-item h3 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      background: #333;
+      color: white;
+      padding: 60px 0;
+      margin-top: 60px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-container h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .contact-info {
+      margin: 30px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+    }
+
+    .contact-item i {
+      color: #FFA500;
+      font-size: 1.5rem;
+    }
+
+    .social-links {
+      margin-top: 30px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background: #444;
+      color: white;
+      border-radius: 50%;
+      line-height: 50px;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: background 0.3s;
+      font-size: 1.2rem;
+    }
+
+    .social-links a:hover {
+      background: #8B00FF;
+    }
+
+    @media (max-width: 768px) {
+      .admissions-hero {
+        padding: 80px 20px 60px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      .application-form {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Ebegrace Zion Academy Logo">
+      <h1>EBEGRACE ZION ACADEMY</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#academics">OUR ACADEMICS</a></li>
+        <li><a href="admissions.html" class="active">ADMISSIONS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="student-portal.html" class="btn-portal">SCHOOL PORTAL</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="admissions-hero">
+    <div class="hero-text">
+      <h1>Admissions Are Open!</h1>
+      <p>For Pre-School, Primary & Junior High School</p>
+      <p class="motto">Motto: Knowledge and Determination</p>
+    </div>
+  </section>
+
+  <main class="admissions-main">
+
+    <!-- ACADEMICS CARDS (NAGIE'S STYLE) -->
+    <section id="academics">
+      <h2 class="section-title">Our Academics</h2>
+      <div class="academics-cards">
+        <div class="academics-card">
+          <h3><i class="fas fa-child"></i> Pre-School</h3>
+          <p>For children aged 1–5. Foundational learning through play, worship, and discovery in a safe, nurturing
+            environment.</p>
+          <a href="#apply" class="btn-outline">Learn More</a>
+        </div>
+        <div class="academics-card">
+          <h3><i class="fas fa-school"></i> Primary</h3>
+          <p>Building strong academics, character, and biblical values for ages 6–11. Focused on literacy, numeracy, and
+            creativity.</p>
+          <a href="#apply" class="btn-outline">Learn More</a>
+        </div>
+        <div class="academics-card">
+          <h3><i class="fas fa-graduation-cap"></i> JHS</h3>
+          <p>Preparing confident, Christ-led leaders for BECE and beyond. Ages 12–15. Emphasis on critical thinking and
+            service.</p>
+          <a href="#apply" class="btn-outline">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section>
+      <h2 class="section-title">Why Choose Ebegrace Zion Academy?</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <i class="fas fa-heart"></i>
+          <h3>Exceptional Care</h3>
+          <p>Loving, nurturing environment for every child.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-book-open"></i>
+          <h3>Early Literacy</h3>
+          <p>Reading and writing skills developed from age 2.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-brain"></i>
+          <h3>Build Great Minds</h3>
+          <p>Critical thinking and creativity encouraged daily.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-users"></i>
+          <h3>Highly Trained Staff</h3>
+          <p>Qualified, passionate educators and caregivers.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-shield-alt"></i>
+          <h3>CCTV Monitoring</h3>
+          <p>Safe and secure campus with 24/7 surveillance.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-star"></i>
+          <h3>Godly Values</h3>
+          <p>Character and faith development at the core.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPLICATION FORM -->
+    <section class="application-section">
+      <div class="application-container">
+        <h2 id="apply">Apply Online</h2>
+        <form id="admissionsForm">
+          <div class="form-full">
+            <label for="childName">Child's Full Name</label>
+            <input type="text" id="childName" required placeholder="e.g., Kwame Boateng">
+          </div>
+          <div>
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" required>
+          </div>
+          <div>
+            <label for="program">Program Applying For</label>
+            <select id="program" required>
+              <option value="">--Select Program--</option>
+              <option value="Pre-School">Pre-School (Ages 1-5)</option>
+              <option value="Primary">Primary (Ages 6-11)</option>
+              <option value="JHS">Junior High School (Ages 12-15)</option>
+            </select>
+          </div>
+          <div>
+            <label for="parentName">Parent/Guardian Full Name</label>
+            <input type="text" id="parentName" required placeholder="e.g., Mrs. Abena Mensah">
+          </div>
+          <div>
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" required placeholder="e.g., 0546792255">
+          </div>
+          <div>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required placeholder="e.g., parent@email.com">
+          </div>
+          <div class="form-full">
+            <label for="address">Home Address</label>
+            <textarea id="address" rows="3" required placeholder="Street, City, Region"></textarea>
+          </div>
+          <div class="form-full">
+            <label for="documents">Upload Child’s Photo & Birth Certificate</label>
+            <div class="file-upload-wrapper">
+              <input type="file" id="documents" name="documents" accept="image/*,.pdf" multiple>
+              <div class="file-upload-area">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Drag & drop files here or click to browse</p>
+                <p class="file-types">JPG, PNG, PDF (Max 5MB each)</p>
+                <div class="file-preview" id="filePreview"></div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary">
+            <i class="fas fa-paper-plane"></i> Submit Application
+          </button>
+        </form>
+      </div>
+    </section>
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+      <div class="contact-container">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span><a href="tel:0546792255" style="color:white; text-decoration:none;">0546 792 255</a></span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span><a href="mailto:ebegracezion@gmail.com"
+                style="color:white; text-decoration:none;">ebegracezion@gmail.com</a></span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Osei Tutu II Avenue, Adum-Kumasi, Opposite Akyempemhene's Palace</span>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.facebook.com/EBEGRATVADUMKUMASI" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/233546792255" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp" style="font-size: 1.5rem; color: #25D366;"></i> Message Us
+          </a>
+        </div>
+      </div>
+    </section>
+    </div>
+    </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="school-info">
+        <h4>Ebegrace Zion Academy</h4>
+        <p>Principal: Rev. Dr. Franchesca K. Afoakwa</p>
+        <p>Email: nagiesangels@yahoo.com</p>
+      </div>
+      <div class="quick-links">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="student-portal.html">School Portal</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Ebegrace Zion Academy. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dropArea = document.querySelector('.file-upload-area');
+      const fileInput = document.getElementById('documents');
+      const filePreview = document.getElementById('filePreview');
+
+      // Prevent default drag behaviors
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+        document.body.addEventListener(eventName, preventDefaults, false);
+      });
+
+      // Highlight drop area when item is dragged over it
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+      });
+
+      // Handle dropped files
+      dropArea.addEventListener('drop', handleDrop, false);
+
+      // Handle file selection via click
+      fileInput.addEventListener('change', handleFiles);
+
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      function highlight() {
+        dropArea.classList.add('drag-over');
+      }
+
+      function unhighlight() {
+        dropArea.classList.remove('drag-over');
+      }
+
+      function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles({ target: { files } });
+      }
+
+      function handleFiles(e) {
+        const files = e.target.files;
+        if (!files.length) return;
+
+        Array.from(files).forEach(file => {
+          if (!validateFile(file)) return;
+          createFilePreview(file);
+        });
+      }
+
+      function validateFile(file) {
+        const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+        const maxSize = 5 * 1024 * 1024; // 5MB
+
+        if (!allowedTypes.includes(file.type)) {
+          alert(`❌ Invalid file type: ${file.name}\nPlease upload JPG, PNG, or PDF.`);
+          return false;
+        }
+
+        if (file.size > maxSize) {
+          alert(`❌ File too large: ${file.name}\nMax size: 5MB`);
+          return false;
+        }
+
+        return true;
+      }
+
+      function createFilePreview(file) {
+        const reader = new FileReader();
+        const previewItem = document.createElement('div');
+        previewItem.className = 'preview-item';
+
+        if (file.type.startsWith('image/')) {
+          reader.onload = (e) => {
+            previewItem.innerHTML = `
+              <img src="${e.target.result}" alt="${file.name}">
+              <div class="file-name">${file.name}</div>
+              <button class="remove-btn" title="Remove">×</button>
+            `;
+            filePreview.appendChild(previewItem);
+          };
+          reader.readAsDataURL(file);
+        } else {
+          previewItem.innerHTML = `
+            <i class="fas fa-file-pdf" style="font-size: 2rem; color: #d32f2f;"></i>
+            <div class="file-name">${file.name}</div>
+            <button class="remove-btn" title="Remove">×</button>
+          `;
+          filePreview.appendChild(previewItem);
+        }
+
+        previewItem.querySelector('.remove-btn').addEventListener('click', () => {
+          previewItem.remove();
+        });
+      }
+
+      // Handle form submission
+      const admissionsForm = document.getElementById('admissionsForm');
+      if (admissionsForm) {
+        admissionsForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const application = {
+            childName: document.getElementById('childName').value,
+            dob: document.getElementById('dob').value,
+            program: document.getElementById('program').value,
+            parentName: document.getElementById('parentName').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            address: document.getElementById('address').value,
+            submittedAt: new Date().toISOString(),
+            status: 'Pending'
+          };
+
+          // Load existing applications
+          const saved = localStorage.getItem('admissions');
+          const admissions = saved ? JSON.parse(saved) : [];
+          admissions.push(application);
+
+          // Save back to localStorage
+          localStorage.setItem('admissions', JSON.stringify(admissions));
+
+          // Show success
+          alert('✅ Thank you for your application!\n\nWe have received your details and will contact you within 3 business days to schedule an interview or orientation.');
+
+          // Reset form
+          admissionsForm.reset();
+          filePreview.innerHTML = '';
+
+          // Scroll to top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>
