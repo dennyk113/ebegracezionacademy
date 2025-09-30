@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add New Student — Ebegrace Zion Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* =============================================
+       ADD STUDENT PAGE — EBEGRAZE ZION ACADEMY
+       ============================================= */
+
+    .add-student-hero {
+      background: linear-gradient(135deg, #8B00FF, #FF6B9D);
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .add-student-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+      font-weight: 300;
+    }
+
+    .add-student-main {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(60, 30, 100, 0.08);
+      border: 1px solid #f0f0ff;
+    }
+
+    .add-student-main h2 {
+      color: #8B00FF;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    /* FORM STYLING */
+    .student-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .form-full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid #eaeaff;
+      border-radius: 16px;
+      font-size: 1rem;
+      color: #444;
+      background: #fafbff;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #8B00FF;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(139, 0, 255, 0.15);
+    }
+
+    /* PHOTO UPLOAD */
+    .photo-upload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .photo-preview-container {
+      width: 150px;
+      height: 180px;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f9f9f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .photo-preview-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-preview-container .upload-icon {
+      font-size: 2.5rem;
+      color: #aaa;
+    }
+
+    .photo-instructions {
+      font-size: 0.85rem;
+      color: #666;
+      text-align: center;
+      max-width: 300px;
+      line-height: 1.5;
+    }
+
+    /* SUBMIT BUTTON */
+    .btn-primary {
+      background: #8B00FF;
+      color: white;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      grid-column: 1 / -1;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background: #6a00cc;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(139, 0, 255, 0.3);
+    }
+
+    /* SUCCESS MESSAGE */
+    .success-message {
+      background: #e8f5e9;
+      border: 1px solid #c8e6c9;
+      color: #2e7d32;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      margin: 30px 0;
+      display: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .add-student-hero {
+        padding: 80px 20px 60px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      .student-form {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .photo-preview-container {
+        width: 120px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Ebegrace Zion Academy Logo">
+      <h1>EBEGRACE ZION ACADEMY</h1>
+    </div>
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav-menu">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="all-students.html">ALL STUDENTS</a></li>
+        <li><a href="#" id="logoutBtn" class="btn-logout">LOGOUT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="add-student-hero">
+    <div class="hero-text">
+      <h1>Add New Student</h1>
+      <p>Enter student details and upload a photo — we'll auto-convert it to passport size</p>
+    </div>
+  </section>
+
+  <main class="add-student-main">
+    <h2><i class="fas fa-user-plus"></i> Student Information Form</h2>
+
+    <div class="success-message" id="successMessage">
+      <i class="fas fa-check-circle" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+      <h3>Student Added Successfully!</h3>
+      <p>Student ID: <strong id="newStudentId">EZ2025001</strong></p>
+      <p>Passport photo has been auto-generated and saved.</p>
+    </div>
+
+    <form id="addStudentForm" class="student-form">
+      <!-- STUDENT INFO -->
+      <div class="form-group">
+        <label for="studentName">Student Full Name *</label>
+        <input type="text" id="studentName" required placeholder="e.g., Kwame Boateng">
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth *</label>
+        <input type="date" id="dob" required>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender *</label>
+        <select id="gender" required>
+          <option value="">--Select Gender--</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="class">Class *</label>
+        <select id="class" required>
+          <option value="">--Select Class--</option>
+          <option value="Creche">Creche</option>
+          <option value="Nursery 1">Nursery 1</option>
+          <option value="Nursery 2">Nursery 2</option>
+          <option value="KG 1">KG 1</option>
+          <option value="KG 2">KG 2</option>
+          <option value="Primary 1">Primary 1</option>
+          <option value="Primary 2">Primary 2</option>
+          <option value="Primary 3">Primary 3</option>
+          <option value="Primary 4">Primary 4</option>
+          <option value="Primary 5">Primary 5</option>
+          <option value="Primary 6">Primary 6</option>
+          <option value="JHS 1">JHS 1</option>
+          <option value="JHS 2">JHS 2</option>
+          <option value="JHS 3">JHS 3</option>
+        </select>
+      </div>
+      
+      <!-- PARENT INFO -->
+      <div class="form-group">
+        <label for="parentName">Parent/Guardian Full Name *</label>
+        <input type="text" id="parentName" required placeholder="e.g., Mrs. Abena Mensah">
+      </div>
+      <div class="form-group">
+        <label for="parentPhone">Parent Phone *</label>
+        <input type="tel" id="parentPhone" required placeholder="e.g., 0546792255">
+      </div>
+      <div class="form-group">
+        <label for="parentEmail">Parent Email *</label>
+        <input type="email" id="parentEmail" required placeholder="e.g., parent@email.com">
+      </div>
+      <div class="form-full">
+        <label for="address">Home Address *</label>
+        <textarea id="address" rows="3" required placeholder="Street, City, Region"></textarea>
+      </div>
+      
+      <!-- MEDICAL INFO -->
+      <div class="form-group">
+        <label for="bloodGroup">Blood Group</label>
+        <select id="bloodGroup">
+          <option value="">--Select Blood Group--</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+      </div>
+      <div class="form-full">
+        <label for="medicalConditions">Medical Conditions (Allergies, Asthma, etc.)</label>
+        <textarea id="medicalConditions" rows="2" placeholder="e.g., Peanut allergy, Epilepsy"></textarea>
+      </div>
+      
+      <!-- PHOTO UPLOAD -->
+      <div class="form-full">
+        <label>Student Photo (Passport Size) *</label>
+        <div class="photo-upload">
+          <div class="photo-preview-container">
+            <img id="photoPreview" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='180' viewBox='0 0 150 180'><rect width='150' height='180' fill='%23f0f0f0'/><text x='75' y='95' font-size='12' text-anchor='middle' fill='%23999'>Upload Photo</text></svg>" alt="Passport Photo">
+          </div>
+          <input type="file" id="studentPhoto" accept="image/*" required style="width: 100%; padding: 10px; border: 2px dashed #ccc; border-radius: 12px; background: white;">
+          <p class="photo-instructions">
+            <i class="fas fa-info-circle"></i> 
+            Photo must be clear, front-facing, with white background. 
+            We'll auto-convert it to Ghana passport size (35mm x 45mm).
+          </p>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn-primary">
+        <i class="fas fa-save"></i> Add Student
+      </button>
+    </form>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="school-info">
+        <h4>Ebegrace Zion Academy</h4>
+        <p>Motto: Knowledge and Determination</p>
+        <p>Slogan: Home of the Intelligence</p>
+      </div>
+      <div class="quick-links">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="all-students.html">All Students</a></li>
+          <li><a href="add-student.html">Add Student</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Ebegrace Zion Academy. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Photo preview
+      const photoInput = document.getElementById('studentPhoto');
+      const photoPreview = document.getElementById('photoPreview');
+      
+      photoInput.addEventListener('change', (e) => {
+        if (e.target.files[0]) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            photoPreview.src = event.target.result;
+          };
+          reader.readAsDataURL(e.target.files[0]);
+        }
+      });
+
+      // Form submission
+      const addStudentForm = document.getElementById('addStudentForm');
+      const successMessage = document.getElementById('successMessage');
+      const newStudentId = document.getElementById('newStudentId');
+      
+      addStudentForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Create FormData
+        const formData = new FormData();
+        formData.append('name', document.getElementById('studentName').value);
+        formData.append('dob', document.getElementById('dob').value);
+        formData.append('gender', document.getElementById('gender').value);
+        formData.append('class', document.getElementById('class').value);
+        formData.append('parentName', document.getElementById('parentName').value);
+        formData.append('parentPhone', document.getElementById('parentPhone').value);
+        formData.append('parentEmail', document.getElementById('parentEmail').value);
+        formData.append('address', document.getElementById('address').value);
+        formData.append('bloodGroup', document.getElementById('bloodGroup').value);
+        formData.append('medicalConditions', document.getElementById('medicalConditions').value);
+        
+        if (photoInput.files[0]) {
+          formData.append('photo', photoInput.files[0]);
+        }
+
+        try {
+          const response = await fetch('/api/students', {
+            method: 'POST',
+            body: formData
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            // Show success message
+            newStudentId.textContent = result.student.id;
+            successMessage.style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+              addStudentForm.reset();
+              photoPreview.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='180' viewBox='0 0 150 180'><rect width='150' height='180' fill='%23f0f0f0'/><text x='75' y='95' font-size='12' text-anchor='middle' fill='%23999'>Upload Photo</text></svg>";
+              successMessage.style.display = 'none';
+            }, 5000);
+          } else {
+            alert('❌ Failed to add student: ' + result.error);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('❌ Failed to add student. Check console for details.');
+        }
+      });
+
+      // Logout
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          sessionStorage.removeItem('loggedInStudent');
+          window.location.href = 'index.html';
+        });
+      }
+
+      // Hamburger menu (reuse from script.js)
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+      
+      if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

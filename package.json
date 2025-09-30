@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "bson": "^6.10.4",
     "mongoose": "^8.18.2"
   }
 }

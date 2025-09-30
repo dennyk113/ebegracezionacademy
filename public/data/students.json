@@ -17,7 +17,7 @@
         "subjects": [
           { "subject": "Mathematics", "grade": "A", "score": 92 },
           { "subject": "English", "grade": "B+", "score": 85 },
-          { "subject": "Bible Knowledge", "grade": "A", "score": 95 }
+          { "subject": "Science", "grade": "A", "score": 95 }
         ]
       }
     }
